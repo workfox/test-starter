@@ -23,6 +23,10 @@ namespace Lk_starter.Controllers
             var model = configuration["Greeting"];
             return View("Index", model);
         }
+        public IActionResult Test()
+        {
+            throw new InvalidOperationException("sorry, this feature is invalid");
+        }
 
         public IActionResult About()
         {
