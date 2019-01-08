@@ -5,14 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Lk_starter.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace Lk_starter.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IConfiguration configuration;
+
+        public HomeController(IConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+
         public IActionResult Index()
         {
-            return View();
+            var model = configuration["Greeting"];
+            return View("Index", model);
         }
 
         public IActionResult About()
